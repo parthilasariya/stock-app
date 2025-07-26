@@ -1,0 +1,113 @@
+:root {
+  --primary: #E41B1F;
+  --primary-light: #eaf4fb;
+  --accent: #39c172;
+  --danger: #ee4d2d;
+  --bg: #f5f6fa;
+  --card-bg: #fff;
+  --border: #e0e3e8;
+  --radius: 12px;
+  --shadow: 0 2px 24px 0 rgba(0,0,0,0.07);
+  --font-main: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: #222;
+  font-family: var(--font-main);
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 480px;
+  margin: 48px auto 0;
+  padding: 24px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1, h2 {
+  color: var(--primary);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+#stock-info {
+  background: var(--primary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px 0 rgba(0,93,170,0.04);
+}
+
+#stock-info p {
+  margin: 8px 0;
+  font-size: 1.1em;
+  letter-spacing: 0.01em;
+}
+
+form.request-form {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 24px 14px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 6px 0 rgba(0,93,170,0.03);
+}
+
+form.request-form input[type="text"],
+form.request-form input[type="email"],
+form.request-form input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #f8fafb;
+  font-size: 1em;
+  transition: border 0.2s;
+  outline: none;
+}
+
+form.request-form input:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+form.request-form button {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+  box-shadow: 0 2px 4px 0 rgba(0,93,170,0.10);
+}
+
+form.request-form button:hover,
+form.request-form button:focus {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 98vw;
+    padding: 8vw 2vw;
+    margin-top: 12vw;
+  }
+  h1, h2 {
+    font-size: 1.45em;
+  }
+  #stock-info, form.request-form {
+    padding: 4vw 3vw;
+  }
+}
