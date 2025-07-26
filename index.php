@@ -8,10 +8,17 @@
     <script src="assets/js/main.js"></script>
 </head>
 <body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>Stock App</h1>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <h1>Rogers Communications (RCI-B.TO) Stock Review</h1>
     <div id="stock-info">
-        <p>Price: $<span id="stock-price">--</span></p>
+        <p>Price: CAD$<span id="stock-price">--</span></p>
         <p>Change: <span id="stock-change">--</span></p>
         <p>Volume: <span id="stock-volume">--</span></p>
         <p>Last Updated: <span id="stock-timestamp">--</span></p>
@@ -34,4 +41,9 @@
     </form>
   </div>
 </body>
+
+<footer> 
+    © <?php echo date("Y");?>
+</footer>
+
 </html>
