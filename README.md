@@ -10,7 +10,7 @@
 
 ## Setup (macOS, XAMPP)
 
-1. **Clone repo** to `~/Applications/XAMPP/htdocs/stock-review-app`
+1. **Clone repo** to `~/Applications/XAMPP/htdocs/stock-app`
 2. **Create DB and Table**  
    - In phpMyAdmin, run the SQL from the requirements
 3. **Configure DB Credentials** in `config/db.php`
@@ -20,7 +20,7 @@
      ALPHA_VANTAGE_KEY=YOUR_API_KEY
      ```
 5. **Start XAMPP** (`sudo /Applications/XAMPP/xamppfiles/xampp start`)
-6. **Browse** to `http://localhost/stock-review-app/`
+6. **Browse** to `http://localhost/stock-app/`
 
 ## Security Notes
 
