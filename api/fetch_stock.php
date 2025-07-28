@@ -1,7 +1,7 @@
 <!-- A backend PHP script that acts as a bridge between frontend and the public stock data API (Alpha Vantage) -->
 
 <?php 
-require_once '..config/db.php'; // Database configuration file
+require_once '../config/db.php'; // Fixed: was '..config/db.php'
 
 $symbol = 'RCI-B.TO'; // Toronto Stock Exchange stock symbol for Rogers Communications
 $apiKey = getenv('ALPHA_VANTAGE_API_KEY'); //Key is stored in .env file
@@ -19,7 +19,7 @@ if (!$data || !isset($data['Time Series (5min)'])) {
     exit;
 }
 
-$timeseries = $data['TIme Series (5min)'];
+$timeseries = $data['Time Series (5min)'];
 $timestamps = array_keys($timeseries);
 
 
