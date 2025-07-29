@@ -22,6 +22,9 @@ if (!$data || !isset($data['Time Series (5min)'])) {
 $timeseries = $data['Time Series (5min)'];
 $timestamps = array_keys($timeseries);
 
+$latest_timestamp = $timestamps[0];
+$latest = $timeseries[$latest_timestamp];
+
 
 
 ?>
