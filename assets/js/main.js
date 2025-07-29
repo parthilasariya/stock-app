@@ -21,7 +21,7 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error); // Debug log
                 console.error('Response:', xhr.responseText); // Debug log
-                $('#stock-info').html('<p>Error loading stock data. Check console for details.</p>');
+                $('#stock-info').html('<p>Error loading stock data.</p>');
             }
         });
     }
@@ -40,7 +40,7 @@ $(document).ready(function() {
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
-                alert('Request sent!');
+                alert('Request sent successfully!'); 
             },
             error: function() {
                 alert('Error sending request.');

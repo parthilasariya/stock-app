@@ -9,13 +9,18 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 require_once '../config/db.php'; 
 
+/**
+ * Finn hub API
+ * $url = "https://finnhub.io/api/v1/quote?symbol=$symbol&token=d24iib9r01qu2jgifkv0d24iib9r01qu2jgifkvg";
+ */
+
 $symbol = 'RCI-B.TO'; // Toronto Stock Exchange stock symbol for Rogers Communications
-$apiKey = getenv('ALPHA_VANTAGE_API_KEY'); //Key is stored in .env file
+
 # Fetch stock data from Alpha Vantage API asking 5min interval, I have recalled above variable
-$url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=$symbol&interval=5min&apikey=$apiKey";
+$url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=$symbol&interval=5min&apikey=DJ9Y03YI9PYUAOJX";
 
 
-// Add debug logging need to remove
+// -- Add debug logging -- [need to remove]
 error_log("Fetching from URL: " . $url);
 
 // -- Fetch Data --
@@ -30,6 +35,7 @@ if (!$response) {
     exit;
 }
 
+// -- Data Processing --
 $data = json_decode($response, true);
 error_log("API Response: " . print_r($data, true));
 
