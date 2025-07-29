@@ -12,6 +12,11 @@
   --header-height: 60px;
 }
 
+/* Universal box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Header Styles */
 .header {
   background: var(--card-bg);
@@ -88,12 +93,14 @@ form.request-form {
   padding: 24px 32px 20px 32px;
   margin-bottom: 28px;
   box-shadow: 0 2px 6px 0 rgba(0,93,170,0.03);
+  box-sizing: border-box; 
 }
 
 form.request-form .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  margin-bottom: 16px;
 }
 
 form.request-form input[type="text"],
@@ -109,6 +116,7 @@ form.request-form input[type="number"] {
   font-size: 16px;
   transition: border 0.2s;
   outline: none;
+  box-sizing: border-box; 
 }
 
 form.request-form input:focus {
@@ -149,6 +157,7 @@ form.request-form button:focus {
     max-width: 95vw;
     padding: 6vw 4vw;
     margin-top: 8vw;
+    box-sizing: border-box; 
   }
   
   #stock-info {
@@ -158,6 +167,7 @@ form.request-form button:focus {
   
   form.request-form .form-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
   
   h1, h2 {

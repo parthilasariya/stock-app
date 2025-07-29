@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rogers Stock Review</title>
+    <title>Stock Review App</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="assets/js/main.js"></script>
@@ -44,9 +44,8 @@
 
 <footer> 
   <div class="footer-container">
-    <p>© <?php echo date("Y");?> Stock Review App</p>
-  </div>
-  
+    <p>© <?php echo date("Y");?> Stock Review App </p>
+  </div> 
 </footer>
 
 </html>

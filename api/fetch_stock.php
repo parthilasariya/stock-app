@@ -10,8 +10,9 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 require_once '../config/db.php'; 
 
 /**
- * Finn hub API
- * $url = "https://finnhub.io/api/v1/quote?symbol=$symbol&token=d24iib9r01qu2jgifkv0d24iib9r01qu2jgifkvg";
+ * FinnHub API
+ * $api = getenv('FINN_HUB_API_KEY');
+ * $url = "https://finnhub.io/api/v1/quote?symbol=$symbol&token=$api";
  */
 
 $symbol = 'RCI-B.TO'; // Toronto Stock Exchange stock symbol for Rogers Communications
@@ -20,18 +21,12 @@ $symbol = 'RCI-B.TO'; // Toronto Stock Exchange stock symbol for Rogers Communic
 $url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=$symbol&interval=5min&apikey=DJ9Y03YI9PYUAOJX";
 
 
-// -- Add debug logging -- [need to remove]
-error_log("Fetching from URL: " . $url);
 
 // -- Fetch Data --
 $response = @file_get_contents($url);
 if (!$response) {
-    $error = error_get_last();
-    error_log("Failed to fetch data: " . print_r($error, true));
     echo json_encode([
-        'error' => 'Could not connect to stock API',
-        'details' => $error['message'] ?? 'Unknown error'
-    ]);
+        'error' => 'Could not connect to stock API',]);
     exit;
 }
 
