@@ -167,3 +167,20 @@ form.request-form button:focus {
     padding: 4vw 5vw;
   }
 }
+
+.footer-container {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.footer-container p {
+  margin: 0;
+}

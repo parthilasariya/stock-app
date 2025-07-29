@@ -43,7 +43,10 @@
 </body>
 
 <footer> 
-    © <?php echo date("Y");?>
+  <div class="footer-container">
+    <p>© <?php echo date("Y");?> Stock Review App</p>
+  </div>
+  
 </footer>
 
 </html>
