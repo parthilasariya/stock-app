@@ -29,4 +29,3 @@ logs/
 # Temporary files
 *.tmp
 *.temp
-api_check.php

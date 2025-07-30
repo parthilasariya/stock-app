@@ -18,10 +18,10 @@
   <div class="container">
     <h1>Rogers Communications Stock Review</h1>
     <div id="stock-info">
-        <p>Current Price: $<span id="stock-price">--</span></p>
-        <p>Change: <span id="stock-change">--</span></p>
-        <p>Volume: <span id="stock-volume">--</span></p>
-        <p>Last Updated: <span id="stock-timestamp">--</span></p>
+        <p><strong>Current Price: </strong><span id="stock-price"></span></p>
+        <p><strong>Change: </strong><span id="stock-change">--</span></p>
+        <p><strong>Volume: </strong><span id="stock-volume">--</span></p>
+        <p><strong>Last Updated: </strong><span id="stock-timestamp">--</span></p>
     </div>
     <h2>Buy Shares</h2>
     <form class="request-form">

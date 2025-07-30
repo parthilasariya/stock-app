@@ -69,20 +69,43 @@ h1, h2 {
 
 #stock-info {
   background: var(--primary-light);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
   padding: 24px 32px;
   margin-bottom: 32px;
   box-shadow: 0 2px 8px 0 rgba(0,93,170,0.04);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: flex-start; /* Align items */
 }
 
 #stock-info p {
-  margin: 8px 0;
-  font-size: 20px;
+  margin: 0; 
+  font-size: 18px;
   letter-spacing: 0.2px;
+  display: flex;
+  flex-direction: column; /* Stack label for columns */
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  border: 2px solid rgba(228, 27, 31, 0.1);
+}
+
+#stock-info p strong {
+  font-size: 15px;
+  color: var(--primary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+#stock-price, #stock-change, #stock-volume, #stock-timestamp {
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+  margin-top: auto;
 }
 
 /* Form edit */
@@ -161,8 +184,14 @@ form.request-form button:focus {
   }
   
   #stock-info {
-    grid-template-columns: 1fr;
-    padding: 4vw 5vw;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  #stock-info p {
+    padding: 16px;
+    text-align: left;
   }
   
   form.request-form .form-row {

@@ -6,25 +6,25 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log('Stock data received:', data); // Debug log
-                
+                console.log('Stock data received:', data); 
+            
                 if (data.error) {
                     $('#stock-info').html('<p>Error: ' + data.error + '</p>');
                     return;
                 }
                 
-                $('#stock-price').text(data.price);
+                $('#stock-price').text('$' + data.price);
                 $('#stock-change').text(data.change_percent + '%'); 
                 $('#stock-volume').text(data.volume);
                 $('#stock-timestamp').text(data.timestamp);
             },
             error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error); // Debug log
-                console.error('Response:', xhr.responseText); // Debug log
+                console.error('AJAX Error:', status, error); 
+                console.error('Response:', xhr.responseText);
                 $('#stock-info').html('<p>Error loading stock data.</p>');
             }
         });
-    }
+    } 
 
     // Initial load
     loadStockData();
@@ -36,7 +36,7 @@ $(document).ready(function() {
     $('.request-form').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
-            url: 'api/submit_request.php', // Fixed path
+            url: 'api/submit_request.php',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {

@@ -6,7 +6,14 @@
 - Users can submit buy/withdraw share requests
 - Requests stored in MySQL
 - Clean, responsive UI
-- Built with PHP (8.1+), MySQL, JavaScript, HTML5, CSS3
+  
+## 🛠️ Technologies
+
+- **Backend**: PHP 8.1+
+- **Database**: MySQL
+- **Frontend**: HTML5, CSS3, JavaScript
+- **API**: TwelveData
+- **Server**: Apache (XAMPP)
 
 ## Setup (macOS, XAMPP)
 
@@ -14,11 +21,7 @@
 2. **Create DB and Table**  
    - In phpMyAdmin, run the SQL from the requirements
 3. **Configure DB Credentials** in `config/db.php`
-4. **Get Alpha Vantage API Key**  
-   - Create `.env` file:  
-     ```
-     ALPHA_VANTAGE_KEY=YOUR_API_KEY
-     ```
+4. **API**: 'https://twelvedata.com/'
 5. **Start XAMPP** (`sudo /Applications/XAMPP/xamppfiles/xampp start`)
 6. **Browse** to `http://localhost/stock-app/`
 
@@ -26,8 +29,4 @@
 
 - All input is validated server and client side.
 - Uses PDO prepared statements to prevent SQL injection.
-- API keys are never exposed to frontend.
 
-## API Source
-
-- [Alpha Vantage](https://www.alphavantage.co/)
