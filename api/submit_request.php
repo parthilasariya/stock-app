@@ -3,6 +3,7 @@ require_once '../config/db.php';
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
+// Check if request method is POST
 $type = $_POST['type'] ?? '';
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');

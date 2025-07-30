@@ -7,7 +7,7 @@
 $host='localhost';
 $dbname='stock_app';
 $user='root';
-$pass='';
+$pass=''; // XAMPP default is empty
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);

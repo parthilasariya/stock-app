@@ -1,27 +1,26 @@
 <?php 
 /**
- * A backend PHP script that acts as a bridge between frontend and the public stock data API (Alpha Vantage)
+ * A backend PHP script that acts as a bridge between frontend and the public stock data API
  */
 
 header('Content-Type: application/json');
 require_once '../config/db.php'; 
 
-
 $symbol = 'RCI';
 $api_key = '8e9b3e875529436db3059f92c808a2e3'; 
-$interval = "30min"; // We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls, so we use 30 min to reduce the number of calls
+$interval = "30min"; # We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls per day, so we use 30 min to reduce the number of calls
 $url = "https://api.twelvedata.com/time_series?symbol=$symbol&interval=$interval&apikey=$api_key";
 
 // Fetch data
 $response = file_get_contents($url);
 if (!$response) {
     echo json_encode(['error' => 'Could not connect to stock API']);
-    exit;
+    exit; # If req fails, returns JSON error response
 }
-
+// Decode JSON response
 $data = json_decode($response, true);
 
-// Check for API error or missing time series
+// Check for API error or missing time series, values contains at least two data points
 if (!isset($data['values']) || count($data['values']) < 2) {
     echo json_encode(['error' => $data['message'] ?? 'Stock data unavailable', 'api_response' => $data]);
     exit;
@@ -30,7 +29,7 @@ if (!isset($data['values']) || count($data['values']) < 2) {
 // Get latest and previous close
 $latest = $data['values'][0];
 $prev = $data['values'][1];
-$latest_close = (float)$latest['close'];
+$latest_close = (float)$latest['close']; # Used float to ensure decimal precision, not strings
 $prev_close = (float)$prev['close'];
 
 // Calculate change %
