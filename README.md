@@ -29,4 +29,3 @@
 
 - All input is validated server and client side.
 - Uses PDO prepared statements to prevent SQL injection.
-
