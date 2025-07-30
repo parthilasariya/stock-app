@@ -16,9 +16,9 @@
     </div>
   </header>
   <div class="container">
-    <h1>Rogers Communications (RCI-B.TO) Stock Review</h1>
+    <h1>Rogers Communications Stock Review</h1>
     <div id="stock-info">
-        <p>Price: CAD$<span id="stock-price">--</span></p>
+        <p>Price: $<span id="stock-price">--</span></p>
         <p>Change: <span id="stock-change">--</span></p>
         <p>Volume: <span id="stock-volume">--</span></p>
         <p>Last Updated: <span id="stock-timestamp">--</span></p>

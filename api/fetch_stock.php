@@ -1,67 +1,47 @@
-
 <?php 
 /**
  * A backend PHP script that acts as a bridge between frontend and the public stock data API (Alpha Vantage)
  */
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 require_once '../config/db.php'; 
 
-/**
- * FinnHub API
- * $api = getenv('FINN_HUB_API_KEY');
- * $url = "https://finnhub.io/api/v1/quote?symbol=$symbol&token=$api";
- */
 
-$symbol = 'RCI-B.TO'; // Toronto Stock Exchange stock symbol for Rogers Communications
+$symbol = 'RCI';
+$api_key = '8e9b3e875529436db3059f92c808a2e3'; 
+$interval = "30min"; // We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls, so we use 30 min to reduce the number of calls
+$url = "https://api.twelvedata.com/time_series?symbol=$symbol&interval=$interval&apikey=$api_key";
 
-# Fetch stock data from Alpha Vantage API asking 5min interval, I have recalled above variable
-$url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=$symbol&interval=5min&apikey=DJ9Y03YI9PYUAOJX";
-
-
-
-// -- Fetch Data --
-$response = @file_get_contents($url);
+// Fetch data
+$response = file_get_contents($url);
 if (!$response) {
-    echo json_encode([
-        'error' => 'Could not connect to stock API',]);
+    echo json_encode(['error' => 'Could not connect to stock API']);
     exit;
 }
 
-// -- Data Processing --
 $data = json_decode($response, true);
-error_log("API Response: " . print_r($data, true));
 
-// -- Validate Data --
-$series = $data['Time Series (5min)'] ?? null;
-if (!$series) {
-    echo json_encode(['error' => 'Stock data unavailable']);
+// Check for API error or missing time series
+if (!isset($data['values']) || count($data['values']) < 2) {
+    echo json_encode(['error' => $data['message'] ?? 'Stock data unavailable', 'api_response' => $data]);
     exit;
 }
 
-// -- Get Latest and Previous Data --
-$timestamps = array_keys($series);
-$latest = $series[$timestamps[0]];
-$prev = $series[$timestamps[1]] ?? null;
+// Get latest and previous close
+$latest = $data['values'][0];
+$prev = $data['values'][1];
+$latest_close = (float)$latest['close'];
+$prev_close = (float)$prev['close'];
 
-// -- Calculate Change % --
-$change_percent = null;
-if ($prev) {
-    $latest_close = (float) $latest['4. close'];
-    $prev_close = (float) $prev['4. close'];
-    if ($prev_close > 0) {
-        $change_percent = round((($latest_close - $prev_close) / $prev_close) * 100, 2);
-    }
-}
+// Calculate change %
+$change_percent = $prev_close > 0 ? round((($latest_close - $prev_close) / $prev_close) * 100, 2) : null;
 
-// -- Output JSON --
+// Output result
 echo json_encode([
-    'symbol'         => $symbol,
-    'price'          => $latest['4. close'],
-    'volume'         => $latest['5. volume'],
-    'timestamp'      => $timestamps[0],
+    'symbol' => $symbol,
+    'price' => $latest_close,
+    'volume' => $latest['volume'],
+    'timestamp' => $latest['datetime'],
     'change_percent' => $change_percent
 ]);
 ?>

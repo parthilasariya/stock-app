@@ -23,4 +23,5 @@ $stmt->execute([
     ':shares' => $shares
 ]);
 echo json_encode(['success' => true, 'message' => 'Request submitted successfully']);
+
 ?>
