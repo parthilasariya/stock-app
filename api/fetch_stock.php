@@ -5,7 +5,7 @@
 
 header('Content-Type: application/json');
 
-// Load Composer autoloader and dotenv
+// Load Composer autoloader, database and dotenv
 require_once '../vendor/autoload.php';
 require_once '../config/db.php'; 
 
@@ -15,7 +15,7 @@ $dotenv->load();
 
 $symbol = $_ENV['STOCK_SYMBOL'];
 $api_key = $_ENV['TWELVEDATA_API_KEY']; 
-# We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls per day, so we use 15 min to reduce the number of calls (if required change to 5min)
+# We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls per day
 $interval = $_ENV['STOCK_INTERVAL']; 
 $url = "https://api.twelvedata.com/time_series?symbol=$symbol&interval=$interval&apikey=$api_key";
 
@@ -41,6 +41,7 @@ $latest_close = (float)$latest['close']; # Used float to ensure decimal precisio
 $prev_close = (float)$prev['close'];
 
 // Calculate change %
+// If we increase interval time then the result of change % will be higher
 $change_percent = $prev_close > 0 ? round((($latest_close - $prev_close) / $prev_close) * 100, 2) : null;
 
 // Output result

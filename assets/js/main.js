@@ -7,12 +7,12 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 console.log('Stock data received:', data); 
-            
+    
                 if (data.error) {
                     $('#stock-info').html('<p>Error: ' + data.error + '</p>');
                     return;
                 }
-                
+                // Update the stock info section with the received data
                 $('#stock-price').text('$' + data.price);
                 $('#stock-change').text(data.change_percent + '%'); 
                 $('#stock-volume').text(data.volume);

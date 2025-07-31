@@ -15,7 +15,7 @@ if (!in_array($type, ['buy', 'withdraw']) || !$name || !$name || $shares <= 0  |
     echo json_encode(['success' => false, 'message' => 'Request submitted']);
     exit;
 }
-
+// Prepare and execute the database query
 $stmt = $pdo->prepare("INSERT INTO requests (type, name, email, shares) VALUES (:type, :name, :email, :shares)");
 $stmt->execute([
     ':type' => $type,
@@ -23,6 +23,7 @@ $stmt->execute([
     ':email' => $email,
     ':shares' => $shares
 ]);
+// Check if the query was successful
 echo json_encode(['success' => true, 'message' => 'Request submitted successfully']);
 
 ?>
