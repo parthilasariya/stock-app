@@ -1,4 +1,4 @@
-# Stock App
+# Stock Review App
 
 ## Features
 
@@ -6,6 +6,14 @@
 - Users can submit buy/withdraw share requests
 - Requests stored in MySQL
 - Clean, responsive UI
+  
+## 🛠️ Technologies
+
+- **Backend**: PHP 8.1+
+- **Database**: MySQL
+- **Frontend**: HTML5, CSS3, JavaScript
+- **API**: TwelveData
+- **Server**: Apache (XAMPP)
   
 ## 🛠️ Technologies
 
@@ -22,6 +30,7 @@
    - In phpMyAdmin, run the SQL from the requirements
 3. **Configure DB Credentials** in `config/db.php`
 4. **API**: 'https://twelvedata.com/'
+4. **API**: 'https://twelvedata.com/'
 5. **Start XAMPP** (`sudo /Applications/XAMPP/xamppfiles/xampp start`)
 6. **Browse** to `http://localhost/stock-app/`
 
@@ -29,3 +38,4 @@
 
 - All input is validated server and client side.
 - Uses PDO prepared statements to prevent SQL injection.
+
