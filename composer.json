@@ -1,0 +1,13 @@
+{
+    "name": "parthilasariya/stock-app",
+    "description": "Stock Review App with RCI tracking",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Parth Ilasariya"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

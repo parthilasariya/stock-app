@@ -4,11 +4,19 @@
  */
 
 header('Content-Type: application/json');
+
+// Load Composer autoloader and dotenv
+require_once '../vendor/autoload.php';
 require_once '../config/db.php'; 
 
-$symbol = 'RCI';
-$api_key = '8e9b3e875529436db3059f92c808a2e3'; 
-$interval = '30min'; # We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls per day, so we use 30 min to reduce the number of calls
+// Load environment variables
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+
+$symbol = $_ENV['STOCK_SYMBOL'];
+$api_key = $_ENV['TWELVEDATA_API_KEY']; 
+# We can set interval to 5 min, however free tier of Twelve Data API has a limit of 800 calls per day, so we use 15 min to reduce the number of calls (if required change to 5min)
+$interval = $_ENV['STOCK_INTERVAL']; 
 $url = "https://api.twelvedata.com/time_series?symbol=$symbol&interval=$interval&apikey=$api_key";
 
 // Fetch data
