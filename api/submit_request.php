@@ -15,20 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Debug: Log all POST data
-error_log("All POST data: " . print_r($_POST, true));
-
 $action = $_POST['action'] ?? '';
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $shares = intval($_POST['shares'] ?? 0);
 
-// Debug: Log received data
-error_log("Received data: action=$action, name=$name, email=$email, shares=$shares");
-
 // Validate input
 if (!in_array($action, ['buy', 'withdraw']) || !$name || !$email || $shares <= 0 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    error_log("Validation failed: action=$action, name=$name, email=$email, shares=$shares");
     echo json_encode(['success' => false, 'message' => 'Invalid input data. Please check all fields.']);
     exit;
 }
