@@ -35,15 +35,29 @@ $(document).ready(function() {
     // Form submission (buy/withdraw)
     $('.request-form').on('submit', function(e) {
         e.preventDefault();
+        
+        var formData = $(this).serialize();
+        console.log('Submitting form data:', formData);
+        
         $.ajax({
             url: 'api/submit_request.php',
             type: 'POST',
-            data: $(this).serialize(),
+            data: formData,
+            dataType: 'json',
             success: function(response) {
-                alert('Request sent successfully!'); 
+                console.log('Server response:', response);
+                if (response.success) {
+                    alert('Request sent successfully!');
+                    // Clear the form
+                    $('input[type="text"], input[type="email"], input[type="number"]').val('');
+                } else {
+                    alert('Error: ' + response.message);
+                }
             },
-            error: function() {
-                alert('Error sending request.');
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', status, error);
+                console.error('Response:', xhr.responseText);
+                alert('Error sending request. Please try again.');
             }
         });
     });
