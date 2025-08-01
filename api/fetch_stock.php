@@ -42,10 +42,10 @@ $prev_close = (float)$prev['close'];
 
 // Calculate change %
 // If we increase interval time then the result of change % will be higher
-$change_percent = $prev_close > 0 ? round((($latest_close - $prev_close) / $prev_close) * 100, 2) : null;
+$change_percent = $prev_close > 0 ? round((($latest_close - $prev_close) / $prev_close) * 100, 2) : null; 
 
 // Output result
-echo json_encode([
+echo json_encode([ 
     'symbol' => $symbol,
     'price' => $latest_close,
     'volume' => $latest['volume'],
