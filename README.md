@@ -81,3 +81,4 @@ The application uses a `.env` file for configuration. Key variables include:
 - All input is validated server and client side.
 - Uses PDO prepared statements to prevent SQL injection.
 
+# stock-review-app
