@@ -3,6 +3,8 @@
   --primary-light: #E8F0FE;
   --accent: #34A853;
   --danger: #EA4335;
+  --warning: #FBBC04;
+  --yellow-accent: #FBBC04;
   --bg: #f8f9fa;
   --card-bg: #fff;
   --border: #dadce0;
@@ -20,7 +22,7 @@
 /* Header Styles */
 .header {
   background: var(--card-bg);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 3px solid var(--yellow-accent);
   box-shadow: var(--shadow);
   position: sticky;
   top: 0;
@@ -65,6 +67,18 @@ h1, h2 {
   color: var(--primary);
   margin-bottom: 16px;
   font-weight: 700;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--yellow-accent);
+  border-radius: 2px;
 }
 
 #stock-info {
@@ -90,6 +104,18 @@ h1, h2 {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   border: 2px solid rgba(66, 133, 244, 0.1);
+  position: relative;
+}
+
+/* Add yellow accent to Change field */
+#stock-info p:nth-child(2) {
+  border-left: 4px solid var(--yellow-accent);
+  background: linear-gradient(135deg, rgba(251, 188, 4, 0.05) 0%, rgba(255, 255, 255, 0.7) 100%);
+}
+
+/* Add yellow accent to Volume field */
+#stock-info p:nth-child(3) {
+  border-top: 3px solid var(--yellow-accent);
 }
 
 #stock-info p strong {
@@ -157,6 +183,7 @@ form.request-form input[type="number"] {
 form.request-form input:focus {
   border-color: var(--primary);
   background: #fff;
+  box-shadow: 0 0 0 3px rgba(251, 188, 4, 0.2);
 }
 
 form.request-form button {
@@ -226,7 +253,7 @@ form.request-form button:focus {
 
 .footer-container {
   background: var(--card-bg);
-  border-top: 1px solid var(--border);
+  border-top: 3px solid var(--yellow-accent);
   box-shadow: var(--shadow);
   position: sticky;
   bottom: 0;
