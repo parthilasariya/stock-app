@@ -5,7 +5,7 @@
 
 ## Features
 
-- Displays real-time Rogers Communications (RCI) stock info
+- Displays real-time Google (GOOG) stock info
 - Users can submit buy/withdraw share requests
 - Requests stored in MySQL
 - Clean, responsive UI
@@ -72,7 +72,7 @@ composer install
 The application uses a `.env` file for configuration. Key variables include:
 
 - `TWELVEDATA_API_KEY`: API key for stock data
-- `STOCK_SYMBOL`: Stock symbol to track (default: RCI)
+- `STOCK_SYMBOL`: Stock symbol to track (default: GOOG)
 - `STOCK_INTERVAL`: Data interval (default: 30min)
 - `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`: Database configuration
 

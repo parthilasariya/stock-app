@@ -29,14 +29,14 @@ $(document).ready(function() {
     // Initial load
     loadStockData();
 
-    // Auto-refresh every 5 minutes (300000 ms)
+    // Auto-refresh every 5 minutes
     setInterval(loadStockData, 300000);
 
     // Form submission (buy/withdraw)
     $('.request-form').on('submit', function(e) {
         e.preventDefault();
-        
-        var formData = $(this).serialize();
+        var $form = $(this); // Store reference to the submitted form
+        var formData = $form.serialize();
         console.log('Submitting form data:', formData);
         
         $.ajax({
@@ -48,8 +48,8 @@ $(document).ready(function() {
                 console.log('Server response:', response);
                 if (response.success) {
                     alert('Request sent successfully!');
-                    // Clear the form
-                    $('input[type="text"], input[type="email"], input[type="number"]').val('');
+                    // Clear only the submitted form
+                    $form[0].reset();
                 } else {
                     alert('Error: ' + response.message);
                 }

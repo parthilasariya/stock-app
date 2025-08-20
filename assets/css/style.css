@@ -109,6 +109,18 @@ h1, h2 {
 }
 
 /* Form edit */
+.forms-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.form-section h2 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
 form.request-form {
   background: var(--bg);
   border: 1px solid var(--border);
@@ -192,6 +204,11 @@ form.request-form button:focus {
   #stock-info p {
     padding: 16px;
     text-align: left;
+  }
+  
+  .forms-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   
   form.request-form .form-row {
