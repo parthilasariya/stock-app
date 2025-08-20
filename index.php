@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Stock Review App</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="assets/js/main.js"></script>
 </head>
